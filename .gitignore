@@ -1,1 +1,9 @@
 .vscode/
+# pycache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# mypy
+.mypy_cache/

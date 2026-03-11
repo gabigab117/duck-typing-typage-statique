@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from ui_lib import BoutonWeb
+
 
 class Dessinable(ABC):
     @abstractmethod
@@ -10,19 +12,6 @@ class Dessinable(ABC):
 class Cercle(Dessinable):  # ← héritage obligatoire
     def dessiner(self) -> None:
         print("Patrick dessine un cercle.")
-
-
-# BoutonWeb vient d'une librairie externe (ui_lib)
-# Son code source :
-#
-#   class BoutonWeb:
-#       def dessiner(self) -> None:
-#           print("Sébastien affiche un bouton.")
-#
-# Elle a bien une méthode dessiner(), mais elle n'hérite pas de Dessinable.
-# L'analyseur statique se plaint, même si le code fonctionne parfaitement à l'exécution.
-
-from ui_lib import BoutonWeb
 
 
 def afficher_element(element: Dessinable) -> None:

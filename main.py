@@ -15,5 +15,5 @@ class Cercle:
 def afficher_element(element: Dessinable) -> None:
     element.dessiner()
 
-afficher_element(Cercle())     # ✅ L'analyseur statique est content
-afficher_element(BoutonWeb())  # ✅ L'analyseur statique est content aussi et pourtant on n'a rien changé dans ui_lib
+afficher_element(Cercle())     # L'analyseur statique est content
+afficher_element(BoutonWeb())  # L'analyseur statique est content aussi et pourtant on n'a rien changé dans ui_lib

@@ -1,33 +1,19 @@
-from abc import ABC, abstractmethod
+from typing import Protocol
+from ui_lib import BoutonWeb  # toujours la même lib externe, rien n'a changé de son côté
 
-
-class Dessinable(ABC):
-    @abstractmethod
-    def dessiner(self) -> None: ...
-
-
-# Ta propre classe : tu peux modifier son code, pas de problème
-class Cercle(Dessinable):  # ← héritage obligatoire
+# Le contrat : "avoir une méthode dessiner()"
+class Dessinable(Protocol):
     def dessiner(self) -> None:
-        print("Patrick dessine un cercle.")
+        ...
 
+# Ta propre classe, sans héritage forcé
+class Cercle:
+    def dessiner(self) -> None:
+        print("Patrick dessine un joli cercle.")
 
-# BoutonWeb vient d'une librairie externe (ui_lib)
-# Son code source :
-#
-#   class BoutonWeb:
-#       def dessiner(self) -> None:
-#           print("Sébastien affiche un bouton.")
-#
-# Elle a bien une méthode dessiner(), mais elle n'hérite pas de Dessinable.
-# L'analyseur statique se plaint, même si le code fonctionne parfaitement à l'exécution.
-
-from ui_lib import BoutonWeb
-
-
+# La fonction attend un Dessinable
 def afficher_element(element: Dessinable) -> None:
     element.dessiner()
 
-
-afficher_element(Cercle())  # OK
-afficher_element(BoutonWeb())  # Pylance se plaint : BoutonWeb n'est pas un Dessinable
+afficher_element(Cercle())     # ✅ L'analyseur statique est content
+afficher_element(BoutonWeb())  # ✅ L'analyseur statique est content aussi et pourtant on n'a rien changé dans ui_lib

@@ -25,3 +25,7 @@ afficher_element(BoutonWeb())  # ⚠️ Pylance se plaint
 ```
 
 `BoutonWeb` (librairie externe) a bien une méthode `dessiner()`, mais n'hérite pas de `Dessinable`. On ne peut pas modifier son code source.
+
+## Solution
+
+Voir la branche 1-utiliser-protocol avec `Protocol` de `typing`.
